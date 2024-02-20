@@ -1,0 +1,763 @@
+Q1. What is NumPy?
+Numpy is Python based library which defines several functions to create and
+manage arrays and to perform complex mathematical operations in Datascience
+domain.
+1. NumPy stands for Numerical Python Library.
+2. Numpy library defines several functions to solve complex mathematical
+problems in Data Science, Machine Learning, Deep Learning etc
+3. Numpy acts as Backbone for most of the libraries used in Data Science like
+Pandas , sklearn etc
+4. Numpy is developed on top of Numeric Library in 2005.
+Numeric Library developed by Jim Hugunin.
+Numpy is developed by Travis Oliphant and multiple contributors.
+5. It is open source library and freeware.
+6. The Fundamental data structure in numpy is ndarray.
+ndarray --->N-Dimensional Array or Numpy Array
+7. Numpy is written in C and Python Languages.
+8. Numpy is superfast when compared with traditional python code.
+
+
+Q2. What are the uses of NumPy?
+Numpy Library defines several functions
+1. For Creation and manipulation of multi dimensional arrays, which is the most
+commonly used data structure in the datascience domain.
+2. For Mathematical operations includes trigonometric operations, statistical
+operations and algebraic computations.
+3. Solving Differential equations
+
+
+Q3. Why is NumPy preferred to other programming tools such as Idl, Matlab,
+Octave, Or Yorick?
+Numpy is opensource and freeware.
+Numpy is a high performance library as it is developed in c and python.
+Easy to use as it is written in python language.
+It defines several easy to use functions for mathematical operations like
+trigonometric operations, statistical operations and algebraic computations.
+
+
+Q4. What are the various features of NumPy?
+1. It is opensource and freeware.
+2. It is superfast because it is developed in C language.
+226
+3. Numpy acts as backbone for Data Science Libraries like pandas, scikit-learn
+etc
+ Pandas internally used 'nd array' to store data, which is numpy data structure.
+ Scikit-learn internally used numpy's nd array.
+4. Numpy has vectorization operations which can be performed at element
+level.
+5. It defines several easy to use functions for mathematical operations like
+trigonometric operations, statistical operations and algebraic computations.
+
+
+Question 5: How to Install NumPy
+2 ways
+1st way:
+---------
+ By using Anaconda Distribution
+ Anaconda is python flavour for Data Science,ML etc.
+ Anaconda distribution has inbuilt numpy library and hence we are not
+required to install.
+2nd way:
+-------
+If Python is already installed in our system, then we can install numpy library as
+follows
+pip install numpy
+D:\durgaclasses>pip install numpy
+Collecting numpy
+ Downloading numpy-1.20.2-cp38-cp38-win_amd64.whl (13.7 MB)
+ |████████████████████████████████| 13.7 MB 6.4 MB/s
+Installing collected packages: numpy
+227
+Successfully installed numpy-1.20.2
+How to check installation:
+--------------------------
+D:\durgaclasses>py
+Python 3.8.6 (tags/v3.8.6:db45529, Sep 23 2020, 15:52:53) [MSC v.1927 64 bit
+(AMD64)] on win32
+Type "help", "copyright", "credits" or "license" for more information.
+>>> import numpy
+>>> numpy.__version__
+'1.20.2'
+
+
+Q6. What are various similarities between NumPy Arrays and Python lists?
+1. Both can be used to store data.
+2. The order will be preserved in both types. Hence we can access elements by
+using index.
+3. Slicing is also applicable for both.
+4. Both are mutable, ie once we create list or array, we can change its elements.
+
+
+Q7. What are various differences between NumPy Arrays and Python lists?
+1. List is inbuilt data type but numpy array is not inbuilt. To use numpy arrays,
+we have to install and import numpy library explicitly.
+2. List can hold heterogeneous (Different types) elements.
+ eg: l = [10,10.5,True,'durga']
+ But array can hold only homogeneous elements.
+ eg: a = numpy.array([10,20,30])
+228
+3. On arrays we can perform vector operations(the operations which can be
+operated on every element of the array). But we cannot perform vector
+operations on list.
+>>> import numpy as np
+>>> a = np.array([10,20,30])
+>>> a
+array([10, 20, 30])
+>>> a+1
+array([11, 21, 31])
+>>> a*2
+array([20, 40, 60])
+>>> a/2
+array([ 5., 10., 15.])
+>>> l=[10,20,30]
+>>> l+1
+Traceback (most recent call last):
+ File "<stdin>", line 1, in <module>
+TypeError: can only concatenate list (not "int") to list
+>>> l*2
+[10, 20, 30, 10, 20, 30]
+>>> l/2
+Traceback (most recent call last):
+ File "<stdin>", line 1, in <module>
+TypeError: unsupported operand type(s) for /: 'list' and 'int'
+4. Arrays consume less memory when compared with list.
+eg:
+import numpy
+import sys
+a = numpy.array([10,20,30,40,10,20,30,40,10,20,30,40,10,20,30,40])
+l = [10,20,30,40,10,20,30,40,10,20,30,40,10,20,30,40]
+print('The Size of Numpy Array:', sys.getsizeof(a))
+229
+print('The Size of List:', sys.getsizeof(l))
+D:\durgaclasses>py test.py
+The Size of Numpy Array: 168
+The Size of List: 184
+5. Arrays are Super Fast when compared with list.
+6. Numpy Arrays are more convenient to use while performing mathematical
+operations.
+
+
+Q8. What are the advantages NumPy Arrays over Python lists?
+1. Performance wise Arrays are Super Fast when compared with list.
+2. Arrays consume less memory when compared with list.
+3. On arrays we can perform vector operations(the operations which can be
+operated on every element of the array). But we cannot perform vector
+operations on list.
+
+
+Q9. What are the advantages Python Lists over NumPy Arrays?
+1. List is inbuilt data type but numpy array is not inbuilt. To use numpy arrays,
+we have to install and import numpy library explicitly.
+2. List can hold heterogeneous (Different types) elements.
+ eg: l = [10,10.5,True,'durga']
+ But array can hold only homogeneous elements.
+ eg: a = numpy.array([10,20,30])
+
+
+Q10. How to create 1-D array and 2-D array from python lists?
+1d_arrray = np.array([10,20,30,40])
+2d_arrray = np.array([[10,20],[30,40]])
+230
+
+
+Q11. How to create a 3D array from Python Lists?
+3d_arrray = np.array([[[10,20],[30,40]],[[50,60],[70,80]]])
+
+
+Q12. How to find shape of nd array?
+By using shape variable.
+a = np.array([[[10,20],[30,40]],[[50,60],[70,80]]])
+
+
+print(a.shape) #(2,2,2)
+Q13. How to find data type of ndarray?
+By using dtype variable.
+a = np.array([[[10,20],[30,40]],[[50,60],[70,80]]])
+print(a.dtype) #int32
+
+
+Q14. How to count the number of times a given value appears in an array of
+integers?
+We have to use unique() function of numpy library.
+>>> a = np.array([1,1,2,3,4,2,3,4,1,2,3,4,5,5,6])
+>>> items,count = np.unique(a,return_counts=True)
+>>> items
+array([1, 2, 3, 4, 5, 6])
+>>> count
+array([3, 3, 3, 3, 2, 1], dtype=int64)
+
+
+Q15. How to check whether array is empty or not i.e array contains zero number
+of elements or not?
+By using size variable.
+>>> a = np.array([10,20,30])
+>>> a.size
+231
+3
+>>> a = np.array([])
+>>> a.size
+0
+
+
+Q16. How to find the indices of an array in NumPy where some condition is
+true?
+By using where() function.
+>>> a = np.array([20,25,30,35,40])
+>>> a
+array([20, 25, 30, 35, 40])
+>>> np.where(a%10==0)
+(array([0, 2, 4], dtype=int64),)
+Note: To get elements satisfy a condition:
+>>> a[a%10==0]
+array([20, 30, 40])
+
+
+Q17. Given a 4x4 Numpy matrix, how to reverse the matrix?
+1st way:
+--------
+a = np.arange(16).reshape(4,4)
+a.flatten()[::-1].reshape(4,4)
+2nd way:
+--------
+Numpy Library contains flip() function
+a = np.arange(16).reshape(4,4)
+>>> np.flip(a)
+array([[15, 14, 13, 12],
+232
+ [11, 10, 9, 8],
+ [ 7, 6, 5, 4],
+ [ 3, 2, 1, 0]])
+
+
+Q17. Create a 3x3x3 array with random values
+ #a= np.random.rand(3,3,3)
+ a= np.random.random((3,3,3))
+ print(a)
+
+
+Q18. Create a 10x10 array with random values and find the minimum and
+maximum values
+ a = np.random.rand(10,10)
+ #a = np.random.random((10,10))
+ amin, amax = a.min(), a.max()
+ print(amin, amax)
+
+
+Q19. Create a random vector of size 30 and find the mean value
+ a = np.random.random(30)
+ #a = np.random.rand(30)
+ b = a.mean()
+ print(b)
+
+
+Q20. Create a 2d array of shape (10,10) with 1 on the border and 0 inside
+a = np.ones((10,10),dtype=int)
+#a[1:-1,1:-1] = 0
+a[1:9,1:9] = 0
+print(a)
+o/p:
+[[1 1 1 1 1 1 1 1 1 1]
+[1 0 0 0 0 0 0 0 0 1]
+[1 0 0 0 0 0 0 0 0 1]
+[1 0 0 0 0 0 0 0 0 1]
+[1 0 0 0 0 0 0 0 0 1]
+[1 0 0 0 0 0 0 0 0 1]
+[1 0 0 0 0 0 0 0 0 1]
+[1 0 0 0 0 0 0 0 0 1]
+[1 0 0 0 0 0 0 0 0 1]
+[1 1 1 1 1 1 1 1 1 1]]
+
+
+Q21. By using numpy, create the following array?
+[[1 1 1 1 1 1 1 1 1 1]
+[1 1 0 0 0 0 0 0 0 1]
+[1 0 1 0 0 0 0 0 0 1]
+[1 0 0 1 0 0 0 0 0 1]
+[1 0 0 0 1 0 0 0 0 1]
+[1 0 0 0 0 1 0 0 0 1]
+[1 0 0 0 0 0 1 0 0 1]
+[1 0 0 0 0 0 0 1 0 1]
+[1 0 0 0 0 0 0 0 1 1]
+[1 1 1 1 1 1 1 1 1 1]]
+>>> a = np.ones((10,10),dtype=int)
+>>> a[1:9,1:9] = 0
+>>> a[[1,2,3,4,5,6,7,8],[1,2,3,4,5,6,7,8]]=1
+>>> print(a)
+Q22. By using numpy, create the following array?
+[[1 1 1 1 1 1 1 1 1 1]
+[1 2 2 2 2 2 2 2 2 1]
+[1 2 3 3 3 3 3 3 2 1]
+[1 2 3 4 4 4 4 3 2 1]
+[1 2 3 4 5 5 4 3 2 1]
+234
+[1 2 3 4 5 5 4 3 2 1]
+[1 2 3 4 4 4 4 3 2 1]
+[1 2 3 3 3 3 3 3 2 1]
+[1 2 2 2 2 2 2 2 2 1]
+[1 1 1 1 1 1 1 1 1 1]]
+a = np.ones((10,10),dtype=int)
+a[1:9,1:9]=2
+a[2:8,2:8]=3
+a[3:7,3:7]=4
+a[4:6,4:6]=5
+
+
+Q23. How to find common values between two arrays?
+a = np.random.randint(0,10,10)
+b = np.random.randint(0,10,10)
+print(np.intersect1d(a,b))
+o/p:
+[0 7 9]
+
+Q24. Create a random vector of size 10 and sort it
+ a = np.random.random(10)
+ a.sort()
+ print(a)
+
+Q25. Consider the following code:
+a = np.arange(9).reshape(3,3)
+for index, value in np.ndenumerate(a):
+ print(index, value)
+
+Write equivalent code without using ndenumerate() function?
+Sol:
+for index in np.ndindex(a.shape):
+ print(index, a[index])
+o/p:
+ (0, 0) 0
+ (0, 1) 1
+ (0, 2) 2
+ (1, 0) 3
+ (1, 1) 4
+ (1, 2) 5
+ (2, 0) 6
+ (2, 1) 7
+ (2, 2) 8
+ (0, 0) 0
+ (0, 1) 1
+ (0, 2) 2
+ (1, 0) 3
+ (1, 1) 4
+ (1, 2) 5
+ (2, 0) 6
+ (2, 1) 7
+ (2, 2) 8
+
+
+Q26. How to access multiple elements of array which are not in order?
+If we want to access multiple elements which are not in order(arbitrary
+elements) then we cannot use basic indexing and slicing operators. For this
+requirement we should go for Advanced Indexing.
+Syntax: a[[row_indices],[column_indices]]
+
+
+Q27. Consider the array:
+a = np.array([10,20,30,40,50,60,70,80,90])
+How to access the elements of 10,30,80?
+1st way:
+>>> indexes = np.array([0,2,7])
+>>> a[indexes]
+ array([10, 30, 80])
+2nd way:
+>>> l = [0,2,7]
+>>> a[l]
+array([10, 30, 80])
+>>> a[[0,2,7]]
+array([10, 30, 80])
+
+
+Q28. What are various differences between Slicing and Advanced Indexing?
+ 1. The elements should be ordered and we cannot select arbitrary elements.
+ 1. The elements need not be ordered and we can select arbitrary elements.
+ 2. Condition based selection not possible.
+ 2. Condition based selection is possible.
+ 3. In numpy slicing, we wont get a new object just we will get view of the
+original object. If we perform any changes to the original copy, those changes
+will be reflected to the sliced copy.
+ 3. But in the case of advanced indexing, a new separate copy will be created.
+If we perform any changes in one copy, then those changes won't be reflected in
+other.
+
+
+Q29. what is broadcasting?
+ Even though, arrays are of different dimensions, different shapes and
+different sizes, still we can perform arithmetic operations between them. It is
+possible by broadcating.
+Broadcasting will be performed automatically and we are not required to
+perform explicitly. But being developer, we should aware, when broadcasting
+will be performed and how it will be performed.
+ Broadcasting won't be possible in all cases. It has some rules. If the rules are
+satisfied then only broadcasting will be performed internally while performing
+arithmetic operations.
+
+Q30. In how many ways we can iterate elements of ndarray?
+ There are three ways of iterate element of nd array:
+ 1. By using python's loops
+ 2. By using numpy nditer() function
+ 3. By using numpy ndenumerate() function
+
+Q31. Consider the array:
+a = np.array([[[10,20],[30,40]],[[40,50],[60,70]]])
+How to get one by one value using for loop?
+
+import numpy as np
+a = np.array([[[10,20],[30,40]],[[40,50],[60,70]]])
+print(a)
+print('Elements one by one:')
+for x in a: # x is 2-D array
+ for y in x: #y is 1-D array
+ for z in y: #z is scalar
+ print(z)
+
+Q32. What is the purpose of nditer() function?
+ nditer() function is specially designed function to iterate elements of any n-D
+array easily without using multiple loops.
+
+
+Q33. How to get required data type elements while iterating by using nditer()
+function?
+While iterating elements of nd array, we can specify our required type. For
+this, we have to use op_dtypes argument.
+
+
+Q34. Explain differences between normal for loop and nditer() function?
+ 1. To iterate n-d array, n for loops are required.
+ 1. To iterate n-d array, only one for loop is required.
+ 2. There is no way to specify our required type
+ 2. There is a way to specify our required type (op_dtypes argument)
+
+
+Q35. What is the purpose of ndenumerate() function?
+ By using nditer() we will get elements only but not indexes.
+ If we want indexes also inaddition to elements, then we should use
+ndenumerate() function.
+ ndenumerate() function returns multidimensional index iterator which
+yields pairs of array indexes(coordinates) and values.
+
+
+Q36. what is the purpose of reshape() function and it syntax?
+ We can use reshape() function to change array shape without changing data.
+ Syntax:
+ reshape(a, newshape, order='C')
+
+
+Q37. What is the meaning of -1 argument in reshape() function?
+ If we don't know the size of any dimension, we can use -1 so that numpy itself
+will evaluate that size.
+
+
+Q38. What is the purpose of resize() function and its syntax?
+ We can use resize() function to resize an existing array.
+ The new array is larger than the original array, then the new array is filled
+with repeated copies of 'a'. Note that this behavior is different from
+a.resize(new_shape) which fills with zeros instead of repeated copies of 'a'.
+
+ Syntax:
+ numpy.resize(a, new_shape)-->For extra elements repeated copies of a will be
+reused.
+ a.resize(new_shape) which fills with zeros instead of repeated copies of 'a'.
+
+
+Q39. Differences between numpy.resize() and ndarray.resize() functions?
+ 1. It is library function present in numpy module
+ 1. It is method present in ndarray class.
+ 2. It will creates a new array and returns it.
+ 2. It won't return new array and existing array will be modified.
+ 3. If the new_shape requires more elements then repeated copies of original
+array will be used.
+ 3. If the new_shape requires more elements then extra elements filled with
+zeros.
+
+
+Q40. Differences between reshape() and resize() functions?
+ 1. It won't create new array object and just we will get view of existing array.
+ If we perform any changes in the reshaped copy, automatically those
+changes will be reflected in original copy.
+ 1. It will create new array object with required new shape.
+ If we perform any changes in the resized array, those changes won't be
+reflected in original copy.
+ 2. The reshape will be happend without changing original data.
+ 2. There may be a chance of data change in resize()
+ 3. The sizes must be matched.
+ 3. The sizes need not be matched.
+ 4. In unknown dimension we can use -1.
+ 4. -1, such type of story not applicable.
+
+
+Q41. What is the purpose of flatten() function and its syntax?
+ We can use flatten() method to flatten(convert) any n-Dimensional array to 1-
+Dimensional array.
+ Syntax:
+ ndarray.flatten(order='C')
+
+
+Q42. what is the purpose of ravel() function?
+ We can use ravel() to flatten any n-Dimensional array to 1-D array, But it
+will return view but not separate copy.
+
+
+Q43. what is the purpose of swapaxes and its syntax?
+ By using transpose we can interchage any number of dimensions. But if we
+want to interchange only two dimensions then we should go for swapaxes()
+function. It is the special case of transpose() function.
+ Syntax:
+ numpy.swapaxes(a, axis1, axis2)
+
+
+Q44. which function we can use for searching the element of ndarray?
+ We can search elements of ndarray by using where() function.
+
+
+Q45. How to insert elements into ndarrays?
+ We can insert elements into ndarrys by using the following functions.
+ 1. insert()
+ 2. append()
+
+
+Q46. what is dot() function?
+ If we want to do matrix multiplication we should go for dot() function.
+ In Linear algebra, multiplication can be represented by using dot(.). Hence
+the name dot function.
+ eg: A.B
+
+
+Q47. What is mean?
+ Mean is the sum of elements along the specified axis divided by number of
+elements.
+
+
+Q48. What is numpy.median?
+ Median is middle element of the array.
+ If the total number of elements is even then two middle elements will be
+there. In this case median is average/mean of middle 2 elements.
+
+
+Q49. What is varience?
+ The variance is a measure of variability. It is calculated by taking the average
+of squared deviations from the mean.
+ ie, variance = mean(abs(x-x.mean())**2)
+
+
+Q50.What is Standard Deviation?
+ Standard deviation is the square root of the average of square deviations
+from mean.
+The formula is std = sqrt(mean(abs(x-x.mean())**2))
+
+
+Q51. list out some numpy universal functions(ufunc)?
+ 1. np.exp(a) --->Takes e to the power of each value. e value:
+2.718281828459045
+ 2. np.sqrt(a) --->Returns square root of each value.
+ 3. np.log(a) -->Returns logarithm of each value.
+ 4. np.sin(a) --->Returns the sine of each value.
+ 5. np.cos(a) --->Returns the co-sine of each value.
+ 6. np.tan(a) --->Returns the tangent of each value.
+
+
+Q52. By using which functions we can perform splitting ndarray?
+ 1. split()
+ 1. vsplit()
+ 2. hsplit()
+ 3. dsplit()
+ 5. array_split()
+
+
+Q53. List out some functions in the numpy random library?
+ 1. randint()
+ 2. rand()
+ 3. uniform()
+ 4. randn()
+ 5. normal()
+ 6. shuffle()
+
+
+Q54. What is the difference between insert() and append() functions?
+ By using insert() function, we can insert elements at our required index
+position.
+ If we want to add elements always at end of the ndarray, then we have to
+go for append() function.
+
+
+
+
+# Customize Arithmetic Operation by using Traditional Python 
+# Arithmetic opration on 1D Array
+import numpy as np
+arr1 = [1,2,3,4]
+arr2 = [10,20,30,40]
+
+
+# Function for Addition:
+def add(arr1,arr2):
+	addition = []
+	for i,j in zip(arr1,arr2):
+		addition.append(i+j)
+	return addition
+print(f'Addition of Two 1D Array: {add(arr1,arr2)}')
+
+
+# Funtion for Subtraction
+def subtract(arr1,arr2):
+	subtract = []
+	for i,j in zip(arr1,arr2):
+		subtract.append(i-j)
+	return subtract
+print(f'The Subtraction of 1D Array: {subtract(arr1,arr2)}')
+
+
+def multiply(arr1, arr2):
+	multiply = []
+	for i,j in zip(arr1, arr2):
+		multiply.append(i*j)
+	return multiply
+print(f'The Mulitplication of Two 1D Array: {multiply(arr1, arr2)}')
+
+
+def divide(arr1, arr2):
+	divide = []
+	for i,j in zip(arr1,arr2):
+		divide.append(i/j)
+	return divide
+print(f'The Division of two 1D Array: {divide(arr1,arr2)}')
+
+
+def floor_divide(arr1,arr2):
+	divide = []
+	for i,j in zip(arr1,arr2):
+		divide.append(i//j)
+	return divide
+print(f'The Floor Div of Two 1D Array: {floor_divide(arr1,arr2)}')
+
+
+def power(arr1,arr2):
+	Power = []
+	for i, j in zip(arr1,arr2):
+		Power.append(i**j)
+	return Power
+print(f'The Pewer of Two 1D Array: {power(arr1,arr2)}')
+
+# Addition:
+Addition = []
+for i, j in zip(arr1,arr2):
+	add = i + j
+	Addition.append(add)
+
+print(f'Addition of Two 1D Array: {Addition}')
+
+# Subtraction
+
+Subtraction = []
+for i,j in zip(arr1, arr2):
+	sub = i-j
+	Subtraction.append(sub)
+print(f'The Subtraction of 1D Array: {Subtraction}')
+
+# Multplication
+Mulitplication = []
+for i, j in zip(arr1, arr2):
+	mul = i*j
+	Mulitplication.append(mul)
+print(f'The Mulitplication of Two 1D Array: {Mulitplication}')
+
+
+# Division
+Division = []
+for i,j in zip(arr1,arr2):
+	div = i/j
+	Division.append(div)
+print(f'The Division of two 1D Array: {Division}')
+
+# Floor Division
+Floor_div = []
+for i,j in zip(arr1,arr2):
+	f_div = i//j
+	Floor_div.append(f_div)
+print(f'The Floor Div of Two 1D Array: {Floor_div}')
+
+# Power
+Power = []
+for i,j in zip(arr1,arr2):
+	pwr = i**j
+	Power.append(pwr)
+print(f'The Power of Two 1D Array: {Power}')
+
+
+
+==========================================================================
+# Arithmetic opration on 2D Array
+import numpy as np
+arr1 = [[1,2,3,4],[5,6,7,8]]
+arr2 = [[10,20,30,40],[50,60,70,80]]
+arr3 = [1,2,3]
+arr4 = [4,5,6]
+# Addition Result
+# [[11,22,33,44],[55,66,77,88]]
+
+
+def add_nested_list(arr1, arr2):
+	if len(arr1) == len(arr2):
+		for i,j in zip(arr1,arr2):
+			if type(i) and type(j) == list:
+				if len(i)==len(j):
+					pass
+			else:
+				return f'List should be nested list'
+
+add_nested_list(arr1,arr2)
+
+
+def add_list(arr1, arr2):
+	result = []
+	if len(arr1) == len(arr2):
+		for i,j in zip(arr1, arr2):
+			if type(i) == int and type(j) == int:
+				result.append(i+j)
+			elif type(i) != int or type(j) != int:
+				return f'Your provide Valuse inside list is not int type'
+		else:
+			return result
+	else:
+		return f'Both Array Length should be Equal'
+# print(add_list(arr3,arr4))
+
+# Function for Addition:
+def add_array(arr1,arr2):
+	if arr1.ndim == arr2.ndim  and arr1.size == arr2.size and arr1.shape == arr2.shape:
+		if arr1.ndim and arr2.ndim ==1:
+			addition = []
+			for i,j in zip(arr1,arr2):
+				addition.append(i+j)
+			return addition
+		elif arr1.ndim and arr2.ndim == 2:
+			result = []
+			for i in range(len(arr1)):
+				add = []
+				for j in range(len(arr1[i])):
+					add.append(arr1[i][j]+arr2[i][j])
+				result.append(add)
+			return result
+	else:
+		return f'Yor provide Array has not the same Dimension, Size and Shape'
+# print(add(arr1, arr2))
+
+
+
+#function for Subtract 
+def subtract_array(arr1,arr2):
+	if arr1.ndim == arr2.ndim  and arr1.size == arr2.size and arr1.shape == arr2.shape:
+		if arr1.ndim and arr2.ndim ==1:
+			subtract = []
+			for i,j in zip(arr1,arr2):
+				subtract.append(i-j)
+			return subtract
+		elif arr1.ndim and arr2.ndim == 2:
+			result = []
+			for i in range(len(arr1)):
+				sub = []
+				for j in range(len(arr1[i])):
+					sub.append(arr1[i][j]-arr2[i][j])
+				result.append(sub)
+			return result
+	else:
+		return f'Yor provide Array has not the same Dimension, Size and Shape'
+print(subtract_array(arr3, arr4))

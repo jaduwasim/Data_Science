@@ -1,0 +1,78 @@
+'''
+Creation array(ndarray) by using python array module
+'''
+p1.py
+import array
+a = array.array('i', [1,2,3,4])
+
+print(__doc__)
+print(a)
+print(f'Type of a: {type(a)}')
+for i in a:
+	print(i)
+
+Note: python array module is not recommended to use because
+much library support is not available
+
+Array(ndarray) creation using numpy
+'''
+1. array
+2. arange
+3. linspace
+4. zeros
+5. ones
+6. full
+7. eye
+8. identity
+9. diag
+10. empty
+11. random
+	- randint
+	- rand
+	- uniform 
+	- normal
+	- shuffle
+	
+'''
+
+1. array
+import numpy as np
+print(f'To get Array Membors: {np.array}')
+print(f'To get help Document of array: {help(np.array)}')
+===================================================
+p2.py:
+
+To get Array Membors: <built-in function array>
+Help on built-in function array in module numpy:
+
+array(...)
+    array(object, dtype=None, *, copy=True, order='K', subok=False, ndmin=0,
+          like=None)
+
+    Create an array.
+
+    Parameters
+    ----------
+    object : array_like
+        An array, any object exposing the array interface, an object whose
+        ``__array__`` method returns an array, or any (nested) sequence.
+        If object is a scalar, a 0-dimensional array containing object is
+-- More  --
+
+Crating 1-D array by using list or tuple:
+p3.py
+import numpy as np 
+l = [1,2,3,4]
+t = (1,2,3,4)
+al = np.array(l)
+at = np.array(t)
+print(al)
+print(f'Type of al: {type(al)}')
+print(f'shape of al: {al.shape}')
+print(f'Size of al: {al.size}')
+print(f'Dimention of al: {al.ndim}')
+print(at)
+print(f'Type of at: {type(at)}')
+print(f'shape of at: {at.shape}')
+print(f'Size of at: {at.size}')
+print(f'Dimention of at: {at.ndim}')

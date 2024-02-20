@@ -1,0 +1,127 @@
+Basic Introduction to the Numpy array
+
+Numpy Introduction:
+numpy ===> Numeriacal Python
+Scipy ===> Scientific Python
+
+Numpy is entry point of Data Science
+
+Need of Numpy:
+--------------
+Normal python or Traditional Python performs basic mathematical operations,
+But in Data Science, Machine Learning, Deep Learning and Artificial Intelligence require complex mathematical operations like
+
+1. Creation of Array
+2. Perform Several operation of those array
+3. Integral Calculas
+4. Defferetial Equations
+5. Statistics related operations
+
+These type of operation doesn't supported by normal python or Traditional python.
+Numpy can perform all those operations
+
+Importance of Numpy:
+. ndarray(n-dimentional array) is the basic data structure in numpye
+. Numpy is the backbone of remaining library like pandas, matplotlib, sklearn(sci-kit learn) etc.
+. Numpy has Vectorization features
+
+History Numy:
+• Numpy stands for Numerical Python
+• It is the fundamental python library to perfrom complex numerical operations
+• Numpy is developed on top of Numeric library in 2005.
+• Numeric library developed by Jim Hugunin.
+• Numpy is developed by Travis Oliphant and mutiple contributors
+• Numpy is freeware and open source library
+• Numpy library is written in C and Python
+• C language ==> performance is very high
+• Most of Numpy is written in C, So performance-wise Numpy is the best
+• Because of high speed, numpy is best choice for ML algorithms than traditionsl
+python's in-built data structures like List.
+
+
+Features of Numpy
+1. Superfast beacuse most of numpy is written in C language
+2. Numpy Array(nd array) basic data structure in Numpy.
+3. It is the backbone for remaining libraries like pandas, scikit-learn etc
+4. Numpy has vectorization feature which imporves performance while iterating
+elements
+
+ndarray in Numpy
+• In numpy data is stored in the form of array.
+• In numpy we can hold data by using Array Data Structure.
+• The Arrays which are created by using numpy are called nd arrays
+• nd array ==> N-Dimensional Array or Numpy Array
+• This nd array is most commonly used in Data Science libraries like pandasm scikit
+learn etc.
+Application Areas of Numpy
+• To perform linear algebra functions
+• To perform linear regression
+• To perfom logistic regression
+• Deep Neural Networks
+• K-means clustering
+• Control Systmes
+• Operational Research
+
+What is an Array
+• An indexed collection of homogenous data elements is nothing but array.
+• It is the most commonly used concept in programming lanaguage like C/C++, java
+etc.
+• By default arrays concept is not available in python,, instead we can use List. (But
+make sure list and array both are not same)
+But in Python, we can create arrays in the following 2 ways:
+• By using array module
+• By using numpy module
+installing Numpy module
+To install latest version
+ pip install numpy
+to install particular version of numpy
+ pip install numpy==1.20.0
+Note:
+When we install Anaconda python. Then there is no need to install numpy explicitly. numpy
+module is implicitly installed along with Anaconda pyton
+
+
+# Check the version of Numpy installed
+p1.py
+import numpy as np
+print(np.__version__)
+
+Output:
+1.26.0
+
+Python List Vs Numpy Array
+Similarities:
+1. Both can be used to store data
+2. The order will be preserved in both. Hence indexing and slicing concepts are
+applicable.
+3. Both are mutable, ie we can change the content.
+Differences:
+1. list is python's inbuilt type. we have to install and import numpy explicitly.
+2. List can contain heterogeneous elements. But array contains only homogeneous
+elements.
+3. On list, we cannot perform vector operations. But on ndarray we can perform vector
+operations.
+4. Arrays consume less memory than list.
+5. Arrays are superfast when compared with list.
+6. Numpy arrays are more convenient to use while performing complex mathematical
+operations
+
+On list, we cannot perform vector operations.
+# But on ndarray we can perform vector operations.
+p2.py
+import numpy as np
+l = [10,20,30,40]
+a = np.array([10,20,30,40])
+l+2 # not possible
+---------------------
+Traceback (most recent call last):
+  File "D:\DS\Ch-1\p2.py", line 4, in <module>
+    l+2
+TypeError: can only concatenate list (not "int") to list
+
+p3.py
+# On ndarrays we can perform vector operations
+import numpy as np
+a = np.array([10,20,30,40])
+a+2 # array([12,22,32,42])
+print(a)
