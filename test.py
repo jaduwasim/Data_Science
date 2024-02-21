@@ -1,4 +1,6 @@
 import numpy as np
-arr1 = np.arange(16).reshape(4,4)
-arr2 = np.arange(12).reshape(4,3)
-print(np.dot(arr1,arr2))
+# list contains heterogenous elements
+l = [10,20,30.5, 'washim']
+a = np.array(l) # upcasting to float
+print(f'a :: {a}')
+print(f'data type of elements of a ==> {a.dtype}')

@@ -56,23 +56,1120 @@ array(...)
     object : array_like
         An array, any object exposing the array interface, an object whose
         ``__array__`` method returns an array, or any (nested) sequence.
-        If object is a scalar, a 0-dimensional array containing object is
--- More  --
+        If object is a scalar, a 0-dimensional array containing object is in the sequence.
 
-Crating 1-D array by using list or tuple:
-p3.py
-import numpy as np 
-l = [1,2,3,4]
-t = (1,2,3,4)
-al = np.array(l)
-at = np.array(t)
-print(al)
-print(f'Type of al: {type(al)}')
-print(f'shape of al: {al.shape}')
-print(f'Size of al: {al.size}')
-print(f'Dimention of al: {al.ndim}')
-print(at)
-print(f'Type of at: {type(at)}')
-print(f'shape of at: {at.shape}')
-print(f'Size of at: {at.size}')
-print(f'Dimention of at: {at.ndim}')
+    subok : bool, optional
+         If True, then sub-classes will be passed-through, otherwise
+         the returned array will be forced to be a base-class array (default).
+    ndmin : int, optional
+         Specifies the minimum number of dimensions that the resulting
+         array should have. Ones will be pre-pended to the shape as
+         needed to meet this requirement.
+
+#To Know properties of ndarray:
+. np.ndim ===> to know the dimension of the ndarray
+. np.dtype ==> to know the data type of the elements in the ndarray
+. np.size ===> to know the total number of elements in the array.
+. n.shape ===> returns the shape of an array in tuple form.
+
+file_name.py
+#input:
+#prperties of ndarray 
+import numpy as np
+arr = np.arange(24).reshape(2,3,4)
+print(f'The Dimention of the array :{arr.ndim}')
+print(f'The data Type of elements in array: {arr.dtype}')
+print(f'The Size of the array: {arr.size}')
+print(f'The Shape of the array : {arr.shape}')
+ 
+Output:
+=======
+The Dimention of the array :3
+The data Type of elements in array: int32
+The Size of the array: 24
+The Shape of the array : (2, 3, 4)
+
+#1D Array Creating using tuples:
+#Input
+t = ('Krishna','Nandu','Moneesh')
+print(f'The type of {t} is {type(t)}')
+arr = np.array(t)
+print(f'The type of {arr} is {type(arr)}')
+print(f'The data type in elements is : {arr.dtype}')
+print(f'The size of Array  : {arr.size}')
+print(f'The Shape of the array: {arr.shape}')
+print(f'a==> {arr}')
+
+#Output:
+The type of ('Krishna', 'Nandu', 'Moneesh') is <class 'tuple'>
+The type of ['Krishna' 'Nandu' 'Moneesh'] is <class 'numpy.ndarray'>
+The data type in elements is : <U7
+The size of Array  : 3
+The Shape of the array: (3,)
+a==> ['Krishna' 'Nandu' 'Moneesh']
+
+#input 
+#2D Array
+# [[10,20,30],[40,50,60],[70,80,90]] --->Nested List
+a = np.array([[10,20,30],[40,50,60],[70,80,90]])
+print(f'Type of a ==> {type(a)}')
+print(f'a ==> \n {a}')
+print(f'The dimensions of the array a ==> {a.ndim}')
+print(f'The data type of elements of array a ==> {a.dtype}')
+print(f'The size of the array a ==> {a.size}')
+print(f'The shape of the array a ==> {a.shape}')
+#Output:
+========
+Type of a ==> <class 'numpy.ndarray'>
+a ==>
+[[10 20 30]
+[40 50 60]
+[70 80 90]]
+The dimensions of the array a ==> 2
+The data type of elements of array a ==> int32
+The size of the array a ==> 9
+The shape of the array a ==> (3, 3)
+
+Note:
+• Array contains only homogenous elements
+• If list contains heterogenous elements, and while creating the array upcasting
+will be performed.
+
+# list contains heterogenous elements
+l = [10,20,30.5]
+a = np.array(l) # upcasting to float
+print(f'a :: {a}')
+print(f'data type of elements of a ==> {a.dtype}')
+Output:
+=======
+a :: [10.  20.  30.5]
+data type of elements of a ==> float64
+
+
+Input :
+=======
+l = [10,20,30.5, 'washim']
+a = np.array(l) # upcasting to float
+print(f'a :: {a}')
+print(f'data type of elements of a ==> {a.dtype}')
+
+Output:
+=======
+a :: ['10' '20' '30.5' 'washim']
+data type of elements of a ==> <U32
+
+Creating arrays with particular datatype
+• we have to use dtype argument while creating the arrray
+In [15]:
+# int type
+a = np.array([10,20,30.5],dtype=int)
+print(a)
+[10 20 30]
+
+In [16]:
+# float type
+a = np.array([10,20,30.5],dtype=float)
+print(a)
+[10. 20. 30.5]
+In [17]:
+# bool type ==> any number is True and zero is False. Any string is True and empty
+string is False
+a = np.array([10,20,30.5],dtype=bool)
+print(a)
+[ True True True]
+In [18]:
+# complex type
+a = np.array([10,20,30.5,0],dtype=complex)
+print(a)
+[10. +0.j 20. +0.j 30.5+0.j 0. +0.j]
+In [19]:
+# str type
+a = np.array([10,20,30.5],dtype=str)
+print(a)
+['10' '20' '30.5']
+creating object type array
+• object is the parent of all int, float, bool, complex and str
+• Here the elements are looks like heterogeneous. But the datatype of elements is
+'object'
+In [20]:
+a = np.array([10,'krishna',10.5,True,10+20j],dtype=object)
+print(a)
+# data type
+print(f"Data type of elements of array a ==> {a.dtype}")
+
+[10 'krishna' 10.5 True (10+20j)]
+Data type of elements of array a ==> object
+arange()
+• we can create only 1-D arrays with arange() function
+In [21]:
+import numpy as np
+help(np.arange)
+Help on built-in function arange in module numpy:
+arange(...)
+ arange([start,] stop[, step,], dtype=None, *, like=None)
+
+ Return evenly spaced values within a given interval.
+
+ Values are generated within the half-open interval ``[start, stop)``
+ (in other words, the interval including `start` but excluding `stop`).
+ For integer arguments the function is equivalent to the Python built-in
+ `range` function, but returns an ndarray rather than a list.
+
+ When using a non-integer step, such as 0.1, the results will often not
+ be consistent. It is better to use `numpy.linspace` for these cases.
+
+
+Python:
+1. range(n) ==> n values from 0 to n-1
+ range(4) ==> 0,1,2,3
+2. range(m,n)==> from m to n-1
+ range(2,7)==> 2,3,4,5,6
+3. range(begin,end,step)
+ range(1,11,1) ==> 1,2,3,4,5,6,7,8,9,10
+ range(1,11,2) ==> 1,3,5,7,9
+ range(1,11,3) ==> 1,4,7,10
+
+In [22]:
+# only stop value ==> 0 to stop-1
+import numpy as np
+a = np.arange(10)
+print(f'a ==> {a}')
+print(f'The dimensions of the array a ==> {a.ndim}')
+print(f'The data type of elements of array a ==> {a.dtype}')
+print(f'The size of the array a ==> {a.size}')
+print(f'The shape of the array a ==> {a.shape}')
+a ==> [0 1 2 3 4 5 6 7 8 9]
+The dimensions of the array a ==> 1
+The data type of elements of array a ==> int32
+The size of the array a ==> 10
+The shape of the array a ==> (10,)
+In [23]:
+# both start and stop values: start to stop-1
+import numpy as np
+a = np.arange(1,11)
+print(f'a ==> {a}')
+print(f'The dimensions of the array a ==> {a.ndim}')
+print(f'The data type of elements of array a ==> {a.dtype}')
+print(f'The size of the array a ==> {a.size}')
+print(f'The shape of the array a ==> {a.shape}')
+a ==> [ 1 2 3 4 5 6 7 8 9 10]
+The dimensions of the array a ==> 1
+The data type of elements of array a ==> int32
+The size of the array a ==> 10
+The shape of the array a ==> (10,)
+In [24]:
+# start, stop and step values : start to stop-1 with step
+import numpy as np
+a = np.arange(1,11,2)
+print(f'a ==> {a}')
+print(f'The dimensions of the array a ==> {a.ndim}')
+print(f'The data type of elements of array a ==> {a.dtype}')
+print(f'The size of the array a ==> {a.size}')
+print(f'The shape of the array a ==> {a.shape}')
+a ==> [1 3 5 7 9]
+The dimensions of the array a ==> 1
+The data type of elements of array a ==> int32
+The size of the array a ==> 5
+The shape of the array a ==> (5,)
+In [25]:
+# with a particular datatype of the elements
+import numpy as np
+a = np.arange(1,11,3,dtype=float)
+print(f'a ==> {a}')
+print(f'The dimensions of the array a ==> {a.ndim}')
+print(f'The data type of elements of array a ==> {a.dtype}')
+print(f'The size of the array a ==> {a.size}')
+print(f'The shape of the array a ==> {a.shape}')
+a ==> [ 1. 4. 7. 10.]
+The dimensions of the array a ==> 1
+The data type of elements of array a ==> float64
+The size of the array a ==> 4
+The shape of the array a ==> (4,)
+linspace()
+• same as arange() only but in the specified interval, linearly spaced values
+In [26]:
+import numpy as np
+help(np.linspace)
+Help on function linspace in module numpy:
+linspace(start, stop, num=50, endpoint=True, retstep=False, dtype=None, axis=0)
+ Return evenly spaced numbers over a specified interval.
+
+ Returns `num` evenly spaced samples, calculated over the
+ interval [`start`, `stop`].
+linspace(start, stop, num=50, endpoint=True, retstep=False, dtype=None, axis=0)
+• Both start and stop are includded because endpoint=True
+• If endpoint=False then stop is excluded
+• retstep denotes the spacing between the points.If True then the value is returned
+• calculation of spacing (stop-start)/(num-1) if endpoint=True
+• calculation of spacing (stop-start)/(num) if endpoint=False
+In [27]:
+# 50 evenly spaced values between 0 and 1 are returned including both 0 and 1
+np.linspace(0,1)
+Out[27]:
+array([0. , 0.02040816, 0.04081633, 0.06122449, 0.08163265,
+ 0.10204082, 0.12244898, 0.14285714, 0.16326531, 0.18367347,
+ 0.20408163, 0.2244898 , 0.24489796, 0.26530612, 0.28571429,
+ 0.30612245, 0.32653061, 0.34693878, 0.36734694, 0.3877551 ,
+ 0.40816327, 0.42857143, 0.44897959, 0.46938776, 0.48979592,
+ 0.51020408, 0.53061224, 0.55102041, 0.57142857, 0.59183673,
+ 0.6122449 , 0.63265306, 0.65306122, 0.67346939, 0.69387755,
+ 0.71428571, 0.73469388, 0.75510204, 0.7755102 , 0.79591837,
+ 0.81632653, 0.83673469, 0.85714286, 0.87755102, 0.89795918,
+ 0.91836735, 0.93877551, 0.95918367, 0.97959184, 1. ])
+In [28]:
+# 4 evenly spaced valued between 0 and 1 including 0 and 1
+np.linspace(0,1,4)
+Out[28]:
+array([0. , 0.33333333, 0.66666667, 1. ])
+In [29]:
+# 4 evenly spaced valued between 0 and 1 including 0 and excluding 1
+np.linspace(0,1,4,endpoint=False)
+Out[29]:
+array([0. , 0.25, 0.5 , 0.75])
+
+In [30]:
+# 4 evenly spaced valued between 0 and 1 including 0 and excluding 1 and return
+spacing
+np.linspace(0,1,4,endpoint=False,retstep=True)
+Out[30]:
+(array([0. , 0.25, 0.5 , 0.75]), 0.25)
+In [31]:
+# 10 values between 1 to 100 including 1 and 100 with equally spaced int values
+np.linspace(1,100,10,dtype=int,retstep=True)
+Out[31]:
+(array([ 1, 12, 23, 34, 45, 56, 67, 78, 89, 100]), 11.0)
+arange() vs linspace()
+• arange() ==> Elements will be considered in the given range based on step value.
+• linspace() ==> The specified number of values will be considered in the given
+range.
+zeros
+• array is filled with 0s
+In [32]:
+import numpy as np
+help(np.zeros)
+Help on built-in function zeros in module numpy:
+zeros(...)
+ zeros(shape, dtype=float, order='C', *, like=None)
+
+ Return a new array of given shape and type, filled with zeros.
+
+ Parameters
+ ----------
+ shape : int or tuple of ints
+ Shape of the new array, e.g., ``(2, 3)`` or ``2``.
+ dtype : data-type, optional
+ The desired data-type for the array, e.g., `numpy.int8`. Default is
+ `numpy.float64`.
+ order : {'C', 'F'}, optional, default: 'C'
+ Whether to store multi-dimensional data in row-major
+ (C-style) or column-major (Fortran-style) order in
+ memory.
+• 0-D array ==> Scalar :: single value
+• 1-D array ==> Vector :: Collection of 0-D arrays
+• 2-D array ==> Matrix :: Collection of 1-D arrays
+• 3-D array ==> collcetion of 2-D arrays
+• (10,) ==>1-D array contains 10 elements
+• (5,2) ==>2-D array contains 5 rows and 2 columns
+• (2,3,4) ==>3-D array
+ 2 ==> number of 2-D arrays
+ 3 ==> The number of rows in every 2-D array
+ 4 ==> The number of columns in every 2-D array
+ size: 2* 3* 4 = 24
+In [33]:
+# zeros(shape, dtype=float, order='C', *, like=None) ==> shape always in tuple form
+# 1-D array with zeros
+np.zeros(4)
+Out[33]:
+array([0., 0., 0., 0.])
+In [34]:
+# 2-D arrays with zeros
+np.zeros((4,3))
+Out[34]:
+array([[0., 0., 0.],
+ [0., 0., 0.],
+ [0., 0., 0.],
+ [0., 0., 0.]])
+
+ In [35]:
+# 3-D array
+np.zeros((2,3,4))
+Out[35]:
+array([[[0., 0., 0., 0.],
+ [0., 0., 0., 0.],
+ [0., 0., 0., 0.]],
+ [[0., 0., 0., 0.],
+ [0., 0., 0., 0.],
+ [0., 0., 0., 0.]]])
+Note: observe the above output.
+• outermost there are 3 square brackets are present means it is 3-D array
+• exclude one outermost bracket then it is a 2-D array ==> total 2 2-D arrays present
+• Each 2-D array contains 1-D arrays. Each 2-D contains 3-rows and 4-columns
+In [36]:
+# 4-D array ==> collection of 3-D arrays
+# (2,2,3,4)
+# 2 ==> no. of 3-D arrays
+# 2 ==> every 3-D 2 2-D arrays
+# 3 ==> Every 2-D array contains 3 rows
+# 4 ==> every 2-D array contains 4 columns
+np.zeros((2,2,3,4))
+Out[36]:
+array([[[[0., 0., 0., 0.],
+ [0., 0., 0., 0.],
+ [0., 0., 0., 0.]],
+ [[0., 0., 0., 0.],
+ [0., 0., 0., 0.],
+ [0., 0., 0., 0.]]],
+ [[[0., 0., 0., 0.],
+ [0., 0., 0., 0.],
+ [0., 0., 0., 0.]],
+ [[0., 0., 0., 0.],
+ [0., 0., 0., 0.],
+ [0., 0., 0., 0.]]]])
+
+ ones()
+• exactly same as zeros except array is filled with 1
+In [37]:
+import numpy as np
+help(np.ones)
+Help on function ones in module numpy:
+ones(shape, dtype=None, order='C', *, like=None)
+ Return a new array of given shape and type, filled with ones.
+
+ Parameters
+ ----------
+ shape : int or sequence of ints
+ Shape of the new array, e.g., ``(2, 3)`` or ``2``.
+ dtype : data-type, optional
+ The desired data-type for the array, e.g., `numpy.int8`. Default is
+ `numpy.float64`.
+ order : {'C', 'F'}, optional, default: C
+ Whether to store multi-dimensional data in row-major
+ (C-style) or column-major (Fortran-style) order in
+ memory.
+
+In [38]:
+# 1-D array
+np.ones(10)
+Out[38]:
+array([1., 1., 1., 1., 1., 1., 1., 1., 1., 1.])
+
+In [39]:
+# 2-D array
+np.ones((5,2),dtype=int)
+Out[39]:
+array([[1, 1],
+ [1, 1],
+ [1, 1],
+ [1, 1],
+ [1, 1]])
+In [40]:
+# 3-D array
+np.ones((2,3,4),dtype=int)
+Out[40]:
+array([[[1, 1, 1, 1],
+ [1, 1, 1, 1],
+ [1, 1, 1, 1]],
+ [[1, 1, 1, 1],
+ [1, 1, 1, 1],
+ [1, 1, 1, 1]]])
+full
+• Return a new array of given shape and type, filled with fill_value.
+In [41]:
+import numpy as np
+help(np.full)
+Help on function full in module numpy:
+full(shape, fill_value, dtype=None, order='C', *, like=None)
+ Return a new array of given shape and type, filled with `fill_value`.
+
+ Parameters
+ ----------
+ shape : int or sequence of ints
+ Shape of the new array, e.g., ``(2, 3)`` or ``2``.
+ fill_value : scalar or array_like
+ Fill value.
+ dtype : data-type, optional
+ The desired data-type for the array The default, None, means
+ `np.array(fill_value).dtype`.
+ order : {'C', 'F'}, optional
+ Whether to store multidimensional data in C- or Fortran-contiguous
+ (row- or column-wise) order in memory.
+
+In [42]:
+# 1-D array
+np.full(10,fill_value=2)
+Out[42]:
+array([2, 2, 2, 2, 2, 2, 2, 2, 2, 2])
+In [43]:
+# 2-D array
+np.full((2,3),fill_value=3)
+Out[43]:
+array([[3, 3, 3],
+ [3, 3, 3]])
+In [44]:
+# 3-D array
+np.full((2,3,4),fill_value=8)
+Out[44]:
+array([[[8, 8, 8, 8],
+ [8, 8, 8, 8],
+ [8, 8, 8, 8]],
+ [[8, 8, 8, 8],
+ [8, 8, 8, 8],
+ [8, 8, 8, 8]]])
+
+ All of the following will give same results
+• np.full(shape=(2,3,4),fill_value=8)
+• np.full((2,3,4),fill_value=8)
+• np.full((2,3,4),8)
+eye()
+• To generate identity matrix
+• Return a 2-D array with ones on the diagonal and zeros elsewhere.
+In [45]:
+import numpy as np
+help(np.eye)
+Help on function eye in module numpy:
+eye(N, M=None, k=0, dtype=<class 'float'>, order='C', *, like=None)
+ Return a 2-D array with ones on the diagonal and zeros elsewhere.
+
+ Parameters
+ ----------
+ N : int
+ Number of rows in the output.
+ M : int, optional
+ Number of columns in the output. If None, defaults to `N`.
+ k : int, optional
+ Index of the diagonal: 0 (the default) refers to the main diagonal,
+ a positive value refers to an upper diagonal, and a negative value
+ to a lower diagonal.
+ dtype : data-type, optional
+ Data-type of the returned array.
+ order : {'C', 'F'}, optional
+ Whether the output should be stored in row-major (C-style) or
+ column-major (Fortran-style) order in memory.
+positional arguments only and keyword arguments only
+1. f(a,b) ==> We can pass positional as well as keyword arguments
+2. f(a,/,b) ==> before '/' we should pass positional arguments only for variables i.e.,
+here for a
+3. f(a,*,b) ==> after '*' we should pass keyword arguments only for the variables ie.,
+here for b
+In [46]:
+# both positional and keywrod arguments
+def f(a,b):
+ print(f'The value of a :: {a}')
+ print(f'The value of b :: {b}')
+f(10,20)
+f(a=10,b=20)
+The value of a :: 10
+The value of b :: 20
+The value of a :: 10
+The value of b :: 20
+In [47]:
+# position_only.py
+def f1(a, /,b):
+ print(f'The value of a :{a}')
+ print(f'The value of b :{b}')
+print("Calling f1(10,20)==> Valid")
+f1(10,20) # valid
+print("Calling f1(a=10,b=20) ==> Invalid")
+f1(a=10,b=20)
+# invalid because before '/' the value for variable should be passed as positional only
+Calling f1(10,20)==> Valid
+The value of a :10
+The value of b :20
+Calling f1(a=10,b=20) ==> Invalid
+---------------------------------------------------------------------------
+TypeError Traceback (most recent call last)
+<ipython-input-47-743e61686e1a> in <module>
+ 6 f1(10,20) # valid
+ 7 print("Calling f1(a=10,b=20) ==> Invalid")
+----> 8 f1(a=10,b=20)
+ 9 # invalid because befoe '/' the value for variable should be passed a
+s positional only
+
+TypeError: f1() got some positional-only arguments passed as keyword argument
+s: 'a'
+In [48]:
+def f1(a,*,b):
+ print(f'The value of a :: {a}')
+ print(f'The value of b :: {b}')
+f1(a=10,b=50) #valid
+f1(10,20)
+# invalid because after '*' we have to provide value for variable(b) through keyword
+only
+The value of a :: 10
+The value of b :: 50
+---------------------------------------------------------------------------
+TypeError Traceback (most recent call last)
+<ipython-input-48-67b108893ea2> in <module>
+ 3 print(f'The value of b :: {b}')
+ 4 f1(a=10,b=50) #valid
+----> 5 f1(10,20) # invalid because after '*' we have to provide value for va
+riable(b) through keyword only
+TypeError: f1() takes 1 positional argument but 2 were given
+Syntax
+• eye(N, M=None, k=0, dtype=<class 'float'>, order='C', *, like=None)
+Return a 2-D array with ones on the diagonal and zeros elsewhere.
+
+• N ==> No of rows
+• M ==> No. of columns
+• K ==> Decides in which diagonal the value should be filled with 1s
+0 ==> Main diagonal
+1 ==> above the main diagonal
+-1 ==> below the main diagonal
+In [49]:
+np.eye(2,3)
+Out[49]:
+array([[1., 0., 0.],
+ [0., 1., 0.]])
+In [50]:
+np.eye(5,k=1)
+Out[50]:
+array([[0., 1., 0., 0., 0.],
+ [0., 0., 1., 0., 0.],
+ [0., 0., 0., 1., 0.],
+ [0., 0., 0., 0., 1.],
+ [0., 0., 0., 0., 0.]])
+
+ In [51]:
+np.eye(5,k=-1)
+Out[51]:
+array([[0., 0., 0., 0., 0.],
+ [1., 0., 0., 0., 0.],
+ [0., 1., 0., 0., 0.],
+ [0., 0., 1., 0., 0.],
+ [0., 0., 0., 1., 0.]])
+eye() properties
+1. It will returns always 2-D arrays
+2. The number of rows and number of columns need not be same.
+3. If we omit the 'M' value then the value will be same as 'N'
+4. Bydefault main diagonal contains 1s. But we can customize the diagonal which has
+to contain 1s.
+identity()
+exactly same as 'eye()' function except
+1. It is always square matrix(The number of rows and number of columns always
+same)
+2. only main diagonal contains 1s
+In [52]:
+import numpy as np
+help(np.identity)
+Help on function identity in module numpy:
+identity(n, dtype=None, *, like=None)
+ Return the identity array.
+
+In [53]:
+# identity(n, dtype=None, *, like=None)
+np.identity(3,dtype=int)
+
+Out[53]:
+array([[1, 0, 0],
+ [0, 1, 0],
+ [0, 0, 1]])
+diag()
+• diag(v, k=0) ==> Extract a diagonal or construct a diagonal array.
+• If we provide 2-D array then it will extract the elements at k-th diagonal
+• If we provide 1-D array the it will construct a diagonal array with the provided
+elements and remaining elements are filled with zeros
+In [54]:
+import numpy as np
+help(np.diag)
+Help on function diag in module numpy:
+diag(v, k=0)
+ Extract a diagonal or construct a diagonal array.
+In [55]:
+# Extract 2-D diagonal elements
+a = np.arange(1,10).reshape(3,3)
+print(f"Original 2-D array ==> \n {a}")
+print(f"Elements prsent at 0-diagonal ==> {np.diag(a,k=0)}")
+print(f"Elements prsent at 1-diagonal ==> {np.diag(a,k=1)}")
+print(f"Elements prsent at 2-diagonal ==> {np.diag(a,k=2)}")
+print(f"Elements prsent at -1-diagonal ==> {np.diag(a,k=-1)}")
+print(f"Elements prsent at -2-diagonal ==> {np.diag(a,k=-2)}")
+print(f"Elements prsent at 3-diagonal ==> {np.diag(a,k=3)}")
+Original 2-D array ==>
+[[1 2 3]
+[4 5 6]
+[7 8 9]]
+Elements prsent at 0-diagonal ==> [1 5 9]
+Elements prsent at 1-diagonal ==> [2 6]
+Elements prsent at 2-diagonal ==> [3]
+Elements prsent at -1-diagonal ==> [4 8]
+Elements prsent at -2-diagonal ==> [7]
+Elements prsent at 3-diagonal ==> []
+In [56]:
+# 1-D construct 2-D array with the diagonal array with the provided elements
+# remaining elements are filled with zeros
+a = np.array([10,20,30,40])
+np.diag(a,k=0)
+Out[56]:
+array([[10, 0, 0, 0],
+ [ 0, 20, 0, 0],
+ [ 0, 0, 30, 0],
+ [ 0, 0, 0, 40]])
+In [57]:
+np.diag(a,k=1)
+Out[57]:
+array([[ 0, 10, 0, 0, 0],
+ [ 0, 0, 20, 0, 0],
+ [ 0, 0, 0, 30, 0],
+ [ 0, 0, 0, 0, 40],
+ [ 0, 0, 0, 0, 0]])
+In [58]:
+np.diag(a,k=-1)
+Out[58]:
+array([[ 0, 0, 0, 0, 0],
+ [10, 0, 0, 0, 0],
+ [ 0, 20, 0, 0, 0],
+ [ 0, 0, 30, 0, 0],
+ [ 0, 0, 0, 40, 0]])
+empty()
+• Return a new array of given shape and type, without initializing entries.
+In [59]:
+import numpy as np
+help(np.empty)
+Help on built-in function empty in module numpy:
+empty(...)
+ empty(shape, dtype=float, order='C', *, like=None)
+
+ Return a new array of given shape and type, without initializing entries.
+
+In [60]:
+np.empty((3,3))
+Out[60]:
+array([[0.00000000e+000, 0.00000000e+000, 0.00000000e+000],
+ [0.00000000e+000, 0.00000000e+000, 6.42285340e-321],
+ [4.47593775e-091, 4.47593775e-091, 1.06644825e+092]])
+Note:
+• There is no default value in C language
+• So if value is initialized then it will be assigned with some garbage values
+• Generally 'empty()' function is ued to create dummy array.
+• np.empty(10) returns uninitialized data ==> we can use this for future purpose
+zeros() vs empty()
+1. If we required an array only with zeros then we should go for zeros().
+2. If we never worry about data, just we required an empty array for future purpose,
+then we should go for empty().
+3. The time required to create emtpy array is very very less when compared with
+zeros array. i.e performance wise empty() function is recommended than zeros() if
+we are not worry about data.
+In [61]:
+# performance comaparision of zeros() and empty()
+import numpy as np
+from datetime import datetime
+import sys
+begin = datetime.now()
+a = np.zeros((10000,300,400))
+after = datetime.now()
+print('Time taken by zeros:',after-begin)
+a= None
+begin = datetime.now()
+a = np.empty((10000,300,400))
+after = datetime.now()
+print('Time taken by empty:',after-begin)
+Time taken by zeros: 0:00:00.027922
+Time taken by empty: 0:00:00.028924
+Note:
+• Numpy : basic datatype ==> ndarray
+• Scipy : Advance Numpy
+• Pandas : basic datatypes => Series(1-D) and DataFrame(Multi dimensional) based
+on Numpy
+• Matplotlib : Data visualization module
+• Seaborn, plotly : based on Matplotlib
+np.random module
+• This library contains several functions to create nd arrays with random data.
+randint
+• To generate random int values in the given range
+In [62]:
+import numpy as np
+help(np.random.randint)
+Help on built-in function randint:
+randint(...) method of numpy.random.mtrand.RandomState instance
+ randint(low, high=None, size=None, dtype=int)
+
+ Return random integers from `low` (inclusive) to `high` (exclusive).
+
+ Return random integers from the "discrete uniform" distribution of
+ the specified dtype in the "half-open" interval [`low`, `high`). If
+ `high` is None (the default), then results are from [0, `low`).
+
+randint(low, high=None, size=None, dtype=int)
+• Return random integers from low (inclusive) to high (exclusive).
+• it is represented as [low, high) ==> [ means inclusive and ) means exclusive
+• If high is None (the default), then results are from [0, low)
+In [63]:
+# it will generate a single random int value in the range 10 to 19.
+np.random.randint(10,20)
+Out[63]:
+10
+In [64]:
+# To create 1-D ndarray of size 10 with random values from 1 to 8?
+np.random.randint(1,9,size=10)
+Out[64]:
+array([8, 4, 8, 7, 4, 3, 8, 6, 5, 8])
+In [65]:
+# To create 2D array with shape(3,5)
+np.random.randint(100,size=(3,5))
+Out[65]:
+array([[98, 32, 45, 60, 7],
+ [97, 42, 71, 0, 17],
+ [17, 44, 2, 29, 45]])
+In [66]:
+# from 0 to 99 random values, 2-D array will be created. Here high is None
+np.random.randint(100,size=(3,5))
+Out[66]:
+array([[92, 29, 24, 20, 56],
+ [12, 20, 54, 83, 12],
+ [ 5, 17, 55, 60, 62]])
+In [67]:
+# To create 3D array with shape(2,3,4)
+# 3D array contains 2 2-D arrays
+# Each 2-D array contains 3 rows and 4 columns
+# np.random.randint(100,size=(2,3,4))
+np.random.randint(100,size=(2,3,4))
+Out[67]:
+array([[[35, 1, 54, 25],
+ [ 5, 44, 93, 60],
+ [27, 24, 23, 51]],
+ [[65, 55, 22, 74],
+ [76, 19, 9, 43],
+ [17, 44, 58, 52]]])
+In [68]:
+# randint(low, high=None, size=None, dtype=int)
+# dtype must be int types
+# int types
+# int8
+# int16
+# int32 (default)
+# int64
+a = np.random.randint(1,11,size=(20,30))
+print(f"Data type of the elements : {a.dtype}")
+Data type of the elements : int32
+In [69]:
+# memory utilization is improved with dtype
+import sys
+a = np.random.randint(1,11,size=(20,30))
+print(f"with int32 size of ndarray : {sys.getsizeof(a)}")
+a = np.random.randint(1,11,size=(20,30),dtype='int8')
+print(f"with int8 size of ndarray : {sys.getsizeof(a)}")
+with int32 size of ndarray : 2520
+with int8 size of ndarray : 720
+astype() ==> To convert the data type from one form to another
+In [70]:
+# we can convert the datatype to another.
+# by default randint() will return int datatype.
+# by using "astype()" we can convert one datatype to another
+a = np.random.randint(1,11,size=(20,30))
+print("Before Conversion ")
+print(f"Data type of a ==> {a.dtype}")
+b = a.astype('float')
+print("Ater calling astype() on the ndarray a ")
+print(f"Data type of b==> {b.dtype}")
+Before Conversion
+Data type of a ==> int32
+Ater calling astype() on the ndarray a
+Data type of b==> float64
+Uniform distribution Vs Normal Distribution
+• Normal Distribution is a probability distribution where probability of x is highest
+at centre and lowest in the ends whereas in Uniform Distribution probability of x is
+constant.
+• Uniform Distribution is a probability distribution where probability of x is
+constant.
+rand()
+• It will generates random float values in the range [0,1) from uniform distribution
+samples.
+• [0 ==> means 0 is incluede and 1) ==> means 1 is excluded
+In [71]:
+import numpy as np
+help(np.random.rand)
+Help on built-in function rand:
+rand(...) method of numpy.random.mtrand.RandomState instance
+ rand(d0, d1, ..., dn)
+
+ Random values in a given shape.
+rand(d0, d1, ..., dn)
+Random values in a given shape.
+In [72]:
+# single random float value from 0 to 1
+np.random.rand()
+Out[72]:
+0.08638507965381459
+In [73]:
+# 1-D array with float values from 0 to 1
+np.random.rand(10)
+Out[73]:
+array([0.39130964, 0.4701559 , 0.49176215, 0.38386718, 0.35090334,
+ 0.02928118, 0.96359654, 0.41079371, 0.38436428, 0.81939376])
+In [74]:
+# 2-D array with float values from 0 to 1
+np.random.rand(3,5)
+Out[74]:
+array([[0.64607105, 0.92823898, 0.48098258, 0.52641539, 0.09602147],
+ [0.36884988, 0.29296605, 0.87343336, 0.67168146, 0.09297364],
+ [0.21607014, 0.14382148, 0.47534017, 0.84083409, 0.73185496]])
+In [75]:
+# 3-D array with float values from 0 to 1
+np.random.rand(2,3,4)
+Out[75]:
+array([[[0.83901492, 0.03543901, 0.76098031, 0.46620334],
+ [0.25545172, 0.24279657, 0.66570238, 0.34390092],
+ [0.44146884, 0.04426514, 0.59433418, 0.25362922]],
+ [[0.88437233, 0.04283568, 0.57814391, 0.91268089],
+ [0.72943145, 0.95593275, 0.26450772, 0.75816229],
+ [0.74559404, 0.22803979, 0.34306227, 0.33591768]]])
+uniform()
+• rand() ==> range is always [0,1)
+• uniform() ==> customize range [low,high)
+In [76]:
+import numpy as np
+help(np.random.uniform)
+Help on built-in function uniform:
+uniform(...) method of numpy.random.mtrand.RandomState instance
+ uniform(low=0.0, high=1.0, size=None)
+
+ Draw samples from a uniform distribution.
+
+ Samples are uniformly distributed over the half-open interval
+ ``[low, high)`` (includes low, but excludes high). In other words,
+ any value within the given interval is equally likely to be drawn
+ by `uniform`.
+
+In [77]:
+# uniform(low=0.0, high=1.0, size=None)
+np.random.uniform() # it will acts same as np.random.rand()
+Out[77]:
+0.8633674116602018
+In [78]:
+# random float value in the given customized range
+np.random.uniform(10,20)
+Out[78]:
+10.297706247279303
+In [79]:
+# 1-D array with customized range of float values
+np.random.uniform(10,20,size=10)
+Out[79]:
+array([16.25675741, 10.57357925, 18.09157687, 19.07874982, 17.06463829,
+ 11.98365064, 12.01449467, 10.8823314 , 18.03513355, 17.66067279])
+ In [80]:
+# 2-D array with customized range of float values
+np.random.uniform(10,20,size=(3,5))
+Out[80]:
+array([[16.96942587, 15.68977979, 16.09812119, 13.06668784, 15.36258784],
+ [14.55135047, 10.27434721, 19.46874406, 16.33163335, 19.07160274],
+ [15.1368871 , 18.83658294, 10.66735409, 14.30008464, 13.79529403]])
+In [81]:
+# 3-D array with customized range of float values
+np.random.uniform(10,20,size=(2,3,4))
+Out[81]:
+array([[[19.71747034, 13.13603927, 13.55533583, 13.49569866],
+ [18.18364556, 11.64037815, 13.12254598, 10.73172933],
+ [18.44982662, 11.48966867, 15.66803442, 12.37854234]],
+ [[16.01656014, 12.22451809, 18.524565 , 17.29353028],
+ [15.33632839, 17.41720778, 17.3426583 , 12.98066622],
+ [17.02012869, 19.74650958, 15.33698393, 16.86296185]]])
+In [82]:
+# to demonstrate the Unifrom distribution in data visualization
+s = np.random.uniform(20,30,size=1000000)
+import matplotlib.pyplot as plt
+count, bins, ignored = plt.hist(s, 15, density=True)
+plt.plot(bins, np.ones_like(bins), linewidth=2, color='r')
+plt.show()
+randn()
+• values from normal distribution with mean 0 and varience(stadard deviation) is 1
+In [83]:
+import numpy as np
+help(np.random.randn)
+Help on built-in function randn:
+randn(...) method of numpy.random.mtrand.RandomState instance
+ randn(d0, d1, ..., dn)
+
+ Return a sample (or samples) from the "standard normal" distribution.
+In [84]:
+# randn(d0, d1, ..., dn)
+# single float value including -ve value also
+a = np.random.randn()
+print(a)
+-0.0563667809620408
+In [85]:
+# 1-D array with mean 0 and stand deviation 1
+a = np.random.randn(10)
+print(a)
+print(f"Mean ==> {a.mean()}")
+print(f"Variance ==> {a.var()}")
+print(f"Standard deviation ==> {a.std()}")
+[-2.59949374 1.07020758 -1.525435 0.97692928 0.71398471 -0.08671092
+ 0.07833857 0.70247123 0.94548715 0.38984236]
+Mean ==> 0.06656212089297449
+Variance ==> 1.3202568278489202
+Standard deviation ==> 1.1490242938462703
+In [86]:
+# 2-D array with float values in normal distribution
+np.random.randn(2,3)
+Out[86]:
+array([[-1.84491706e+00, -1.80823278e-03, 1.61444938e-01],
+ [-1.05642111e-01, 1.38334944e+00, -8.11945928e-01]])
+In [87]:
+# 3-D array with float values in normal distribution
+np.random.randn(2,3,4)
+Out[87]:
+array([[[-0.67500418, -0.04050421, -1.28250359, -0.22205388],
+ [-0.82973108, 0.69627796, -0.44151688, -1.05482818],
+ [-0.39583573, -0.45231744, 0.72255689, -2.02508302]],
+ [[ 0.56678912, -0.07604355, -0.62011088, -1.57825963],
+ [-0.51442293, 0.52223471, 0.44212152, 0.85563198],
+ [-1.17712106, 0.06659177, -2.06951363, -0.39449518]]])
+• randint() ==> To generate random int values in the given range.
+• rand() ==> uniform distribution in the range [0,1)
+• uniform() ==> uniform distribution in our provided range
+• randn() ==> normal distribution values with mean 0 and variance is 1
+• normal() ==> normal distribution values with our mean and variance.
+normal()
+• We can customize mean and variance
+In [88]:
+import numpy as np
+help(np.random.normal)
+Help on built-in function normal:
+normal(...) method of numpy.random.mtrand.RandomState instance
+ normal(loc=0.0, scale=1.0, size=None)
+
+ Draw random samples from a normal (Gaussian) distribution.
+normal(loc=0.0, scale=1.0, size=None)
+• loc : float or array_like of floats
+ Mean ("centre") of the distribution.
+• scale : float or array_like of floats
+ Standard deviation (spread or "width") of the distribution. Must be non-negative.
+• size : int or tuple of ints, optional
+In [89]:
+# equivalent ot np.random.randn()
+np.random.normal()
+Out[89]:
+-1.5337940293701702
+In [90]:
+# 1-D array with float values in normal distribution
+a = np.random.normal(10,4,size=10)
+print(f" a ==> {a}")
+print(f"Mean ==> {a.mean()}")
+print(f"Variance ==> {a.var()}")
+print(f"Standard deviation ==> {a.std()}")
+a ==> [12.58568061 12.65559388 2.05077827 11.47857117 8.28240666
+ 5.81919127 13.26960627 7.08689804 14.17971283 12.81610858]
+Mean ==> 10.022454758081924
+Variance ==> 14.411542333115623
+Standard deviation ==> 3.7962537234905183
+In [91]:
+# 2-D array with float values in normal distribution
+np.random.normal(10,4,size=(3,5))
+Out[91]:
+array([[ 9.60636406, 10.55287084, 13.58021522, 8.25985296, 12.12854933],
+ [ 8.93107829, 3.37094761, 8.64304598, 11.32689884, 20.16374935],
+ [ 7.09621692, 10.86554327, 5.52023479, 9.4032508 , 9.75254932]])
+In [92]:
+# 3-D array with float values in normal distribution
+np.random.normal(10,4,size=(2,3,4))
+Out[92]:
+array([[[13.00647353, 11.55193581, 7.71907516, 8.66954042],
+ [ 6.94062911, 9.64218428, 9.57700968, 11.82765693],
+ [16.17363874, 6.88623436, 8.78229986, 5.41236423]],
+ [[13.34349311, 14.04491431, 0.86900938, 9.72759205],
+ [ 8.67789112, 7.02952354, 9.19535948, 15.08727821],
+ [ 3.05669971, 12.80722846, 15.10007439, 14.21390539]]])
+In [93]:
+# to demonstrate the Unifrom distribution in data visualization
+s = np.random.normal(10,4,1000000)
+import matplotlib.pyplot as plt
+count, bins, ignored = plt.hist(s, 15, density=True)
+plt.plot(bins, np.ones_like(bins), linewidth=2, color='r')
+plt.show()
+shuffle()
+• Modify a sequence in-place by shuffling its contents.
+• This function only shuffles the array along the first axis of a multi-dimensional
+array.(axis-0)
+• The order of sub-arrays is changed but their contents remains the same.
+In [94]:
+import numpy as np
+help(np.random.shuffle)
+Help on built-in function shuffle:
+shuffle(...) method of numpy.random.mtrand.RandomState instance
+ shuffle(x)
+
+ Modify a sequence in-place by shuffling its contents.
+
+ This function only shuffles the array along the first axis of a
+ multi-dimensional array. The order of sub-arrays is changed but
+ their contents remains the same.
+In [95]:
+# 1-D array
+a = np.arange(9)
+print(f'a before shuffling : {a}')
+np.random.shuffle(a) # inline shuffling happens
+print(f'a after shuffling : {a}')
+a before shuffling : [0 1 2 3 4 5 6 7 8]
+a after shuffling : [0 6 1 8 4 2 5 3 7]
+In [96]:
+# 2-D array
+# (6,5)
+# axis-0 : number of rows(6)
+# axis-1 : number of columns(5)
+# This function only shuffles the array along the first axis of a multi-dimensional
+array(axis-0).
+# The order of sub-arrays is changed but their contents remains the same.
+a = np.random.randint(1,101,size=(6,5))
+print(f'a before shuffling ==> \n {a}')
+np.random.shuffle(a) # inline shuffling happens
+print(f'a after shuffling ==>\n {a}')
+a before shuffling ==>
+[[ 26 4 63 66 37]
+[ 65 85 14 51 68]
+[ 59 3 22 25 50]
+[ 4 42 40 81 79]
+[ 50 83 70 13 2]
+[100 54 95 39 67]]
+a after shuffling ==>
+[[ 59 3 22 25 50]
+[ 65 85 14 51 68]
+[100 54 95 39 67]
+[ 4 42 40 81 79]
+[ 26 4 63 66 37]
+[ 50 83 70 13 2]]
+3-D array : (4,3,4)
+• 4 : number of 2-D arrays (axis-0) ==> Vertical
+• 3 : rows in every 2-D array(axis-1) ==> Horizontal
+• 4 : columns in every 2-D array(axis-1)
+If we apply shuffle for 3-D array, then the order of 2-D arrays will be changed but not
+its internal content.
+In [97]:
+a = np.arange(48).reshape(4,3,4)
+print(f'Before shuffling 3-D array \n :{a}')
+np.random.shuffle(a)
+print(f'After shuffling 3-D array \n :{a}')
+Before shuffling 3-D array
+:[[[ 0 1 2 3]
+ [ 4 5 6 7]
+ [ 8 9 10 11]]
+ [[12 13 14 15]
+ [16 17 18 19]
+ [20 21 22 23]]
+[[24 25 26 27]
+ [28 29 30 31]
+ [32 33 34 35]]
+[[36 37 38 39]
+ [40 41 42 43]
+ [44 45 46 47]]]
+After shuffling 3-D array
+:[[[36 37 38 39]
+ [40 41 42 43]
+ [44 45 46 47]]
+[[12 13 14 15]
+ [16 17 18 19]
+ [20 21 22 23]]
+[[24 25 26 27]
+ [28 29 30 31]
+ [32 33 34 35]]
+[[ 0 1 2 3]
+ [ 4 5 6 7]
+ [ 8 9 10 11]]]
+Summary of random library functions:
+1. randint() ==> To generate random int values in the given range.
+2. rand() ==> To generate uniform distributed float values in [0,1)
+3. uniform() ==> To generate uniform distributed float values in the given
+range.[low,high)
+4. randn() ==> normal distributed float values with mean 0 and standard deviation 1.
+5. normal() ==> normal distributed float values with specified mean and standard
+deviation.
+6. shuffle() ==> To shuffle order of elements in the given nd array.
